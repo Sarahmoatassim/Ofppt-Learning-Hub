@@ -1,249 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Page de connexion</title>
-
-  <style>
-  
-    * {box-sizing: border-box; margin: 0; padding: 0;}
-    html,body {height:100%; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#043057;}
-
-    body{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: linear-gradient(135deg, #0b63d8 0%, #1b9fff 50%, #6ec1ff 100%);
-      padding: 24px;
-    }
-
-    
-    .login-card{
-      width: 100%;
-      max-width: 420px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.92));
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(2,18,45,0.25);
-      padding: 28px;
-      backdrop-filter: blur(6px);
-    }
-
-    .brand{
-      text-align:center;
-      margin-bottom: 18px;
-    }
-    .brand h1{
-      font-size:20px;
-      color:#063b6a;
-      letter-spacing:0.2px;
-    }
-    .brand p{
-      font-size:13px;
-      color:#2b587a;
-      margin-top:6px;
-    }
-
-    form {display:flex; flex-direction:column; gap:14px;}
-
-    .input-group{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-    }
-    label{
-      font-size:13px;
-      color:#12507a;
-    }
-    input[type="email"],
-    input[type="password"]{
-      height:44px;
-      padding: 10px 12px;
-      border-radius:8px;
-      border: 1px solid rgba(6,64,98,0.12);
-      font-size:15px;
-      outline:none;
-      transition: box-shadow .15s, border-color .15s;
-      background: #fff;
-    }
-    input::placeholder {color: #95b6d6;}
-    input:focus{
-      border-color: rgba(6,64,98,0.32);
-      box-shadow: 0 4px 12px rgba(6,64,98,0.08);
-    }
-
-    .password-row{
-      position:relative;
-    }
-    .toggle-password{
-      position:absolute;
-      right:10px;
-      top:50%;
-      transform:translateY(-50%);
-      background:none;
-      border:none;
-      cursor:pointer;
-      font-size:13px;
-      color:#15609a;
-      padding:6px;
-    }
-
-    .row-between{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .remember{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      font-size:13px;
-      color:#145478;
-    }
-    .remember input{ width:16px; height:16px; }
-
-    .forgot{
-      font-size:13px;
-      color:#0b63d8;
-      text-decoration:none;
-    }
-    .forgot:hover{ text-decoration:underline; }
-
-    .btn{
-      height:46px;
-      border-radius:10px;
-      border: none;
-      cursor: pointer;
-      font-weight:600;
-      font-size:15px;
-      background: linear-gradient(90deg,#0b63d8,#1b9fff);
-      color:#fff;
-      box-shadow: 0 8px 18px rgba(11,99,216,0.24);
-      transition: transform .08s ease, box-shadow .12s ease, opacity .12s;
-    }
-    .btn:active{ transform: translateY(1px); }
-    .btn:disabled{
-      opacity:0.6;
-      cursor:not-allowed;
-    }
-
-    .or-sep{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      color:#2b587a;
-      font-size:13px;
-      margin:6px 0 4px;
-    }
-    .or-sep::before, .or-sep::after{
-      content:"";
-      flex:1;
-      height:1px;
-      background: linear-gradient(90deg, rgba(6,64,98,0.04), rgba(6,64,98,0.08));
-      border-radius:2px;
-    }
-
-    .alt-actions{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      margin-top:8px;
-    }
-    .link-btn{
-      background:none;
-      border:1px solid rgba(6,64,98,0.08);
-      padding:8px 12px;
-      border-radius:8px;
-      cursor:pointer;
-      font-size:13px;
-      color:#145478;
-    }
-
-    .small-note{
-      font-size:12px;
-      color:#225b80;
-      text-align:center;
-      margin-top:12px;
-    }
-
-    @media (max-width:420px){
-      .login-card{ padding:20px; border-radius:12px; }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<title>Connexion OFPPT</title>
+<style>
+body { font-family: Arial; background: #f4f4f4; display:flex; justify-content:center; padding:20px;}
+.container { background:white; padding:20px; border-radius:8px; width:350px; box-shadow:0 0 5px rgba(0,0,0,0.2);}
+button { padding:10px; width:100%; margin-top:10px; border:none; background:blue; color:white; border-radius:5px; cursor:pointer;}
+</style>
 </head>
 <body>
+<div class="container">
+<h2>Connexion</h2>
+<form action="login.php" method="POST">
+<label>Email :</label>
+<input type="email" name="email" required>
 
-  <main class="login-card" role="main" aria-labelledby="login-title">
-    <div class="brand">
-      <h1 id="login-title">Connexion</h1>
-      <p>Bienvenue — connectez-vous à votre compte</p>
-    </div>
+<label>Mot de passe :</label>
+<input type="password" name="password" required>
 
-    <form id="loginForm" novalidate>
-      <div class="input-group">
-        <label for="email"><mark>Adresse e-mail</mark></label>
-        <input id="email" name="email" type="email" placeholder="exemple@domaine.com" required autocomplete="email" />
-      </div>
-
-      <div class="input-group password-row">
-        <label for="password"><mark>Mot de passe</mark></label>
-        <input id="password" name="password" type="password" placeholder="Votre mot de passe" required autocomplete="current-password" />
-        <button type="button" class="toggle-password" aria-label="Afficher le mot de passe">Afficher</button>
-      </div>
-
-      <div class="row-between">
-        <label class="remember">
-          <input type="checkbox" id="remember" name="remember" />
-          Se souvenir
-        </label>
-        <a class="forgot" href="#" id="forgotLink">Mot de passe oublié ?</a>
-      </div>
-
-      <button class="btn" id="submitBtn" type="submit">Se connecter</button>
-
-      <div class="or-sep" aria-hidden="true">ou</div>
-
-      <div class="alt-actions" aria-hidden="true">
-        <button type="button" class="link-btn">Continuer avec Google</button>
-        <button type="button" class="link-btn">Continuer avec GitHub</button>
-      </div>
-
-      <p class="small-note">Pas de compte ? <a href="#" style="color:#0b63d8;text-decoration:none;">S'inscrire</a></p>
-    </form>
-  </main>
-
-  <script>
-    
-    const form = document.getElementById('loginForm');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  
-  const email = document.getElementById('email').value.trim();
-  const password = pass.value.trim();
-
-  if (!email || !password) {
-    alert('Veuillez remplir l\'email et le mot de passe.');
-    return;
-  }
-
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    alert('Adresse e-mail invalide.');
-    return;
-  }
-
-  const submitBtn = document.getElementById('submitBtn');
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Connexion…';
-
-  setTimeout(() => {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Se connecter';
-    alert('Formulaire prêt à être envoyé (simulation).');
-  }, 900);
-});
-
-  </script>
-
+<button type="submit">Se connecter</button>
+</form>
+<p>Pas encore de compte ? <a href="inscription.html">S'inscrire</a></p>
+</div>
 </body>
 </html>
