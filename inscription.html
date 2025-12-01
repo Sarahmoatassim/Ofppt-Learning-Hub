@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulaire OFPPT Simple</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      width: 350px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    .switch {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .switch button {
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    h2 { text-align: center; font-size: 20px; }
+    label { font-size: 14px; }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn-send {
+      width: 100%;
+      padding: 10px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="switch">
+    <button onclick="showForm('etudiant')">Étudiant</button>
+    <button onclick="showForm('formateur')">Formateur</button>
+  </div>
+
+  <!-- FORMULAIRE ÉTUDIANT -->
+  <form id="etudiant">
+    <h2>Étudiant</h2>
+
+    <label>Prénom</label>
+    <input type="text" />
+
+    <label>Nom</label>
+    <input type="text" />
+
+    <label>Email</label>
+    <input type="email" />
+
+    <label>ID Étudiant</label>
+    <input type="text" />
+
+    <button class="btn-send">Envoyer</button>
+  </form>
+
+  <!-- FORMULAIRE FORMATEUR -->
+  <form id="formateur" style="display:none">
+    <h2>Formateur</h2>
+
+    <label>Prénom</label>
+    <input type="text" />
+
+    <label>Nom</label>
+    <input type="text" />
+
+    <label>Email</label>
+    <input type="email" />
+
+    <label>ID Formateur</label>
+    <input type="text" />
+
+    <button class="btn-send">Envoyer</button>
+  </form>
+
+</div>
+
+<script>
+function showForm(name) {
+  document.getElementById('etudiant').style.display = name === 'etudiant' ? 'block' : 'none';
+  document.getElementById('formateur').style.display = name === 'formateur' ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>
